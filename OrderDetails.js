@@ -14,7 +14,7 @@ this.state = {buttonDisable:false};
  AcceptedButton=()=>{
 this.setState({ sampleText:'Accepted',})
  
-//buttonDisable:!this.state.buttonDisable,
+//buttonDisable:!this.state.buttonDis,
 
 
  }
