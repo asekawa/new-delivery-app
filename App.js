@@ -3,6 +3,7 @@ import { Button,View, Text } from "react-native";
 import { createStackNavigator, createAppContainer } from "react-navigation";
 import {Login} from "./LogIn"
 import {Orders} from "./Orders"
+import ShowLocation from './ShowLocation'
 import {OrderDetails} from "./OrderDetails"
 
 /* class HomeScreen extends React.Component {
@@ -38,6 +39,7 @@ const AppNavigator = createStackNavigator(
     Home: Login,
     DisplayOrders: Orders,
     OrderDetails:OrderDetails,
+    ShowLocation: ShowLocation
   },
   {
     initialRouteName: "Home"

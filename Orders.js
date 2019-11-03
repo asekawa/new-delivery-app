@@ -13,62 +13,27 @@ export class Orders extends React.Component {
 
           <Text> Order Details  {"\n"}</Text>
           
-        
-        <View style={styles1.sec}> 
-        <TouchableOpacity
-        onPress={()=>this.props.navigation.navigate('OrderDetails')}
-        >
-            <View style={{flexDirection:'row', padding:'2%' ,height:'100%',width:'100%'}}>
-                <View style={styles1.img}></View>
-                <View>
-                    <Text style={styles1.txt}>Order Number 1</Text>
-                    <Text style={styles1.txt}>Order Number 1</Text>
-                    <Text style={styles1.txt}>Order Number 1</Text>
+        {[1,2,3].map( item => {
+          return (
+            <View style={styles1.sec} key={item}> 
+            <TouchableOpacity
+            onPress={()=>this.props.navigation.navigate('OrderDetails')}
+            >
+                <View style={{flexDirection:'row', padding:'2%' ,height:'100%',width:'100%'}}>
+                    <View style={styles1.img}></View>
+                    <View>
+                        <Text style={styles1.txt}>Order Number 1</Text>
+                        <Text style={styles1.txt}>Order Number 1</Text>
+                        <Text style={styles1.txt}>Order Number 1</Text>
+                    </View>
+    
                 </View>
-
+    
+            </TouchableOpacity>
+    
             </View>
-
-        </TouchableOpacity>
-
-        </View>
-
-        <View style={styles1.sec}> 
-        <TouchableOpacity
-        onPress={()=>this.props.navigation.navigate('OrderDetails')}
-        >
-            <View style={{flexDirection:'row', padding:'2%' ,height:'100%',width:'100%'}}>
-                <View style={styles1.img}></View>
-                <View>
-                    <Text style={styles1.txt}>Order Number 1</Text>
-                    <Text style={styles1.txt}>Order Number 1</Text>
-                    <Text style={styles1.txt}>Order Number 1</Text>
-                </View>
-
-            </View>
-
-        </TouchableOpacity>
-
-        </View>
-
-        <View style={styles1.sec}> 
-        <TouchableOpacity
-        onPress={()=>this.props.navigation.navigate('OrderDetails')}
-        >
-            <View style={{flexDirection:'row', padding:'2%' ,height:'100%',width:'100%'}}>
-                <View style={styles1.img}></View>
-                <View>
-                    <Text style={styles1.txt}>Order Number 1</Text>
-                    <Text style={styles1.txt}>Order Number 1</Text>
-                    <Text style={styles1.txt}>Order Number 1</Text>
-                </View>
-
-            </View>
-
-        </TouchableOpacity>
-
-        </View>
-
-
+          )
+        })}
         </View>
       );
     }
