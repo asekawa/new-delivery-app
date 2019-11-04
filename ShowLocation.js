@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
     top: 50,
     left: 0,
     right: 0,
-    bottom: 10,
+    bottom: 60,
   },
 });
 
@@ -88,6 +88,7 @@ const ShowLocation = () => {
           <></>
         )}
       </MapView>
+          <Button title="Confirm order" style={{width: "100%"}}></Button>
     </>
   );
 };

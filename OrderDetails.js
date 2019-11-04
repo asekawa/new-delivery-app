@@ -50,7 +50,7 @@ export class OrderDetails extends React.Component {
           onPress={() => this.AcceptedButton}>
           <Text style={styles.txt}>{this.state.sampleText}></Text>
         </TouchableOpacity>
-        <Button style={{textAlign: "center"}} onPress={() => this.props.navigation.navigate("ShowLocation")} title="Show Location"/>
+        <Button style={{textAlign: "center"}} onPress={() => this.props.navigation.navigate("MapView")} title="Show Location"/>
         <TouchableOpacity
           style={styles.button}
           onPress={() => this.props.navigation.navigate('DisplayOrders')}>

@@ -19,12 +19,14 @@ export class Orders extends React.Component {
             <TouchableOpacity
             onPress={()=>this.props.navigation.navigate('OrderDetails')}
             >
-                <View style={{flexDirection:'row', padding:'2%' ,height:'100%',width:'100%'}}>
+                <View style={{flexDirection:'row', padding:'0.5%' ,height:'100%',width:'100%'}}>
                     <View style={styles1.img}></View>
                     <View>
-                        <Text style={styles1.txt}>Order Number 1</Text>
-                        <Text style={styles1.txt}>Order Number 1</Text>
-                        <Text style={styles1.txt}>Order Number 1</Text>
+                        <Text style={styles1.txt}>Order Number </Text>
+                        <Text style={styles1.txt}>customer name</Text>
+                        <Text style={styles1.txt}>Order details</Text>
+                        <Text style={styles1.txt}>Total</Text>
+                        <Text style={styles1.txt}>Adress</Text>
                     </View>
     
                 </View>

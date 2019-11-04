@@ -1,60 +1,147 @@
-import React from "react";
-import { Platform, StyleSheet, Text, View,TextInput,TouchableOpacity,Button} from "react-native";
+import React from 'react';
+import {
+  StyleSheet,
+  Text,
+  View,
+  TextInput,
+  Alert,
+  Button,
+  BackHandler,
+  Image,
+} from 'react-native';
+import axios from 'axios'
+import AsyncStorage from '@react-native-community/async-storage'
+import driver from './Images/d1.jpg'
 
-export  class Login extends React.Component {
-static navigationOption={
-    header:null
-}
-    state={
+export class Login extends React.Component {
+  static navigationOption = {
+    header: null,
+  };
 
-        
-        userName:'',
-        password:'',
+  state = {
+    email: '',
+    password: '',
+  };
 
-    }
-    render() {
-      return (
-        <View style={styles.container}>
-        
-        <Text style={{color:"blue", fontSize:20 }}>restuarant managemnet system {"\n"}</Text>
-        
-        <Text style={{ fontSize:15}}> user name {"\n"}</Text>
-        <TextInput 
-        style={{width:300,borderColor:"black",borderEndWidth:1}}
-        
+  //This function set user token sent by the server in async storage. Async Storage is
+  // similar to local storage in web apps. After setting, user is directed to "Orders" page.
+  //(for definitions of the screens, see App.js)
+  setToken = async token => {
+    await AsyncStorage.setItem("token", token).then(async val => {
+        const token = await AsyncStorage.getItem('token')
+        this.props.navigation.navigate('Orders');
+    });
+  };
 
-        value={this.state.userName} onChangeText={(text)=>this.setState({userName:text})}/> 
-        
-        <Text style={{ fontSize:15}}>Password</Text>
-        
-        <TextInput 
-        style={{width:300,borderColor:"black",borderEndWidth:1}}
-        onChangeText={(text)=>this.setState({password:text})}
-
-        value={this.state.password} /> 
-       
-        <Button title="Log in" onPress={()=>this.props.navigation.navigate('DisplayOrders')}/> 
-      </View>
-      );
-    }
+  //This is the first page that users see after login. To prevent logged in users from
+  //going back to login screen, the back button of the device has been disabled only for this
+  //screen.
+  componentDidMount() {
+    BackHandler.addEventListener('hardwareBackPress', this.handleBackButton);
   }
 
-  const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      justifyContent: 'center',
-      alignItems: 'center',
-      backgroundColor: '#F5FCFF',
-    },
-    welcome: {
-      fontSize: 20,
-      textAlign: 'center',
-      margin: 10,
-    },
-    instructions: {
-      textAlign: 'center',
-      color: '#333333',
-      marginBottom: 5,
-    },
-  });
-  
+  componentWillUnmount() {
+    BackHandler.removeEventListener('hardwareBackPress', this.handleBackButton);
+  }
+
+  handleBackButton() {
+    return true;
+  }
+
+  //No. 01
+  //This function is called when "Login" button is pressed.There is a route '/authenticate'
+  //in the backend which handles login using email and password. Axios library provides a
+  //way to specify base url (in this case "http://192.168.1.100:300/api") in App.js. Then
+  //all subsequent request urls in the app are appended to this base url and sent to the server.
+  login = () => {
+    axios.post('/authenticate',{
+      email: this.state.email,
+      password: this.state.password
+    }).then(res => {
+      if(res.data.token){
+        Alert.alert("Login Success");
+        this.setToken(res.data.token);
+       
+        //navigation part
+     
+      }
+      else if(err){
+        Alert.alert("Login F");
+
+      }
+    })
+    //}).catch(err => Alert.alert("Login failed"))
+  }
+
+  render() {
+    return (
+      <View style={styles.container}>
+
+        
+        <Text style={{color: 'blue', fontSize: 25,marginLeft:40}}>
+          Restaurant Management System {'\n'}
+        </Text>
+        
+        <Image source={driver} style={{width:100,height:100,borderRadius:45}}></Image>
+
+     
+        
+        <View style={{display: "flex"}}></View>
+        <View style={styles.username}>
+          <Text style={{fontSize: 15}}>Email</Text>
+
+          <TextInput
+            style={{width: 300, borderColor: 'black', borderWidth: 1,borderStyle:'solid',marginBottom:15}}
+            value={this.state.username}
+            onChangeText={text => this.setState({email: text})}
+          />
+        </View>
+
+        <View style={styles.password}>
+          <Text style={{fontSize: 15}}>Password</Text>
+
+          <TextInput
+            style={{width: 300, borderColor: 'black', borderWidth: 1,borderStyle:'solid',marginBottom:15}}
+            onChangeText={text => this.setState({password: text})}
+            secureTextEntry={true}
+            value={this.state.password}
+          />
+        </View>
+
+        <Button
+          title="Log in"
+          onPress={this.login}
+          style={{marginTop:10}}
+        />
+      </View>
+    );
+  }
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: '100%',
+  },
+  welcome: {
+    fontSize: 20,
+    textAlign: 'center',
+    margin: 10,
+  },
+  username: {
+    display: "flex",
+    flexDirection: "column",
+  },
+  password: {
+    display: "flex",
+    flexDirection: "column"
+  },
+  imageConteiner:{
+    width:30,
+    height:30,
+    borderRadius:15,
+    position:'relative'
+  },
+});
