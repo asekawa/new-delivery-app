@@ -66,21 +66,24 @@ export class Login extends React.Component {
      
       }
       else if(err){
+       
         Alert.alert("Login F");
 
       }
     })
-    //}).catch(err => Alert.alert("Login failed"))
+    .catch(err => {Alert.alert("Login failed"),console.log(err)})
+    
   }
 
   render() {
     return (
       <View style={styles.container}>
 
-        
-        <Text style={{color: 'blue', fontSize: 25,marginLeft:40}}>
-          Restaurant Management System {'\n'}
+        <View style={{display: "flex",justifyContent: "center"}}>
+        <Text style={{color: '#90ccae',fontSize: 45 }}>
+          FOOD HUB {'\n'}
         </Text>
+        </View>
         
         <Image source={driver} style={{width:100,height:100,borderRadius:45}}></Image>
 
@@ -110,6 +113,7 @@ export class Login extends React.Component {
 
         <Button
           title="Log in"
+          color="#90ccae"
           onPress={this.login}
           style={{marginTop:10}}
         />

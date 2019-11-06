@@ -6,12 +6,14 @@ export class Orders extends React.Component {
       header:null
   }
     render() {
+
       return (
 
 
         <View style={styles1.container}>
+         
 
-          <Text> Order Details  {"\n"}</Text>
+          <Text> Order Details  {"\n"} </Text> 
           
         {[1,2,3].map( item => {
           return (

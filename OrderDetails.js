@@ -12,10 +12,18 @@ import {TouchableHighlight} from 'react-native-gesture-handler';
 
 export class OrderDetails extends React.Component {
   static navigationOption = {
-    header: null,
+     title:OrderDetails,
+    headerRight: () => (
+      <Button
+       // onPress={() => alert('This is a button!')}
+         style={{textAlign: "center", marginTop: 80}} onPress={() => this.props.navigation.navigate("Home")} title="logout"
+       // title="logout"
+       // color="#fff"
+      />
+    ),
   };
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {sampleText: 'Accept'};
     this.state = {buttonDisable: false};
   }
@@ -27,10 +35,16 @@ export class OrderDetails extends React.Component {
 
   render() {
     return (
+      
+      
       <View style={styles.container}>
-        <Text style={{color: 'blue', fontSize: 20, textAlign: 'left'}}>
+        <View>
+        <Button style={{textAlign: "center", marginTop: 80}} onPress={() => this.props.navigation.navigate("Home")} title="logout"/>
+        </View>
+        <Text style={{color: 'blue', fontSize: 20, textAlign: 'left', marginTop: 60}}>
           Order details {'\n'}
         </Text>
+        
         <Text style={{color: 'blue', fontSize: 20, textAlign: 'left'}}>
           Order Number:{'\n'}
         </Text>
@@ -44,12 +58,7 @@ export class OrderDetails extends React.Component {
           location{'\n'}
         </Text>
 
-        <TouchableOpacity
-          style={styles.button}
-          disable={false}
-          onPress={() => this.AcceptedButton}>
-          <Text style={styles.txt}>{this.state.sampleText}></Text>
-        </TouchableOpacity>
+        
         <Button style={{textAlign: "center"}} onPress={() => this.props.navigation.navigate("MapView")} title="Show Location"/>
         <TouchableOpacity
           style={styles.button}

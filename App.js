@@ -5,7 +5,12 @@ import {Orders} from "./Orders"
 import CheckAuth from './CheckAuth'
 import {OrderDetails} from "./OrderDetails"
 import MapView from "./ShowLocation"
-import axios from 'axios'
+import axios from 'axios';
+import {
+  
+  Button,
+  
+} from 'react-native';
 
 //defining base url here enables you to write network requests to the server
 //without having to write full url all the time. Instead you should only use the rest
@@ -13,7 +18,7 @@ import axios from 'axios'
 //Eg: /authenticate instead of http://192.168.1.100:3000/api/authenticate
 //The following IP address differs from each other. make sure to check your machine's
 //IP address and replace this with it( IP only. Keep the port number as it is).
-axios.defaults.baseURL = "http://100.103.63.224:3000/api/"
+axios.defaults.baseURL = "http://10.10.5.123:3000/api/"
 
 const AppNavigator = createStackNavigator(
   {
@@ -21,18 +26,35 @@ const AppNavigator = createStackNavigator(
       screen: Login,
       navigationOptions:  {
         title: '',
-        headerLeft: null
+        
     }
     
     },
     Orders: {
       screen: Orders,
-      navigationOptions:  {
+      navigationOptions: ({ navigation }) => ({
         title: 'Orders',
-        headerLeft: null
-    }
+        headerLeft: () => (
+          <Button
+           style={{textAlign: "center", marginTop: 80}} onPress={() => navigation.navigate("Home")} title="logout"/>
+
+           // onPress={() => alert('This is a button!')}
+           // title="logout"
+            //color="#e34566"
+          
+        ),
+      })
     },
-    OrderDetails:OrderDetails,
+    OrderDetails: {
+      screen: OrderDetails,
+      navigationOptions: ({ navigation }) => ({
+        title: 'Order Details',
+        headerLeft: () => (
+          <Button
+           style={{textAlign: "center", marginTop: 80}} onPress={() => navigation.navigate("Home")} title="logout"/>
+        ),
+      }) 
+    },
     CheckAuth: CheckAuth,
     MapView: MapView,
   },

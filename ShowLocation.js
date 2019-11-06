@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const ShowLocation = () => {
+export default function ShowLocation(){
   const [query, setQuery] = useState('');
   const [currentLoc, setCurrentLoc] = useState({});
   const [destinationLoc, setDestinationLoc] = useState({});
@@ -93,4 +93,12 @@ const ShowLocation = () => {
   );
 };
 
-export default ShowLocation;
+ShowLocation.navigationOptions = ({navigation}) => {
+  return {
+    title: "Confirm Order",
+    headerRight: (
+      <Button
+      style={{textAlign: "center", marginTop: 80}} onPress={() => navigation.navigate("Home")} title="logout"/>
+    ),
+  };
+};
