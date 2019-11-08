@@ -88,7 +88,7 @@ export default function ShowLocation(){
           <></>
         )}
       </MapView>
-          <Button title="Confirm order" style={{width: "100%"}}></Button>
+          <Button title="Order Completed" style={{ width: "100%" }}></Button>
     </>
   );
 };

@@ -16,7 +16,7 @@ export class OrderDetails extends React.Component {
     headerRight: () => (
       <Button
        // onPress={() => alert('This is a button!')}
-         style={{textAlign: "center", marginTop: 80}} onPress={() => this.props.navigation.navigate("Home")} title="logout"
+         style={{textAlign: "center", marginTop: 80}} onPress={() => this.props.navigation.navigate("Home")} title="logot"
        // title="logout"
        // color="#fff"
       />
@@ -39,9 +39,10 @@ export class OrderDetails extends React.Component {
       
       <View style={styles.container}>
         <View>
+          
         <Button style={{textAlign: "center", marginTop: 80}} onPress={() => this.props.navigation.navigate("Home")} title="logout"/>
         </View>
-        <Text style={{color: 'blue', fontSize: 20, textAlign: 'left', marginTop: 60}}>
+        <Text style={{color: 'blue', fontSize: 20, textAlign: 'right', marginTop: 60}}>
           Order details {'\n'}
         </Text>
         
@@ -59,7 +60,11 @@ export class OrderDetails extends React.Component {
         </Text>
 
         
-        <Button style={{textAlign: "center"}} onPress={() => this.props.navigation.navigate("MapView")} title="Show Location"/>
+        <Button 
+        textAlign= "center" 
+        color="#90ccae" 
+         onPress={() => this.props.navigation.navigate("MapView")} title="Show Location"/>
+         
         <TouchableOpacity
           style={styles.button}
           onPress={() => this.props.navigation.navigate('DisplayOrders')}>

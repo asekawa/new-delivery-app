@@ -7,8 +7,9 @@ import {OrderDetails} from "./OrderDetails"
 import MapView from "./ShowLocation"
 import axios from 'axios';
 import {
-  
+  View,
   Button,
+  
   
 } from 'react-native';
 
@@ -18,7 +19,7 @@ import {
 //Eg: /authenticate instead of http://192.168.1.100:3000/api/authenticate
 //The following IP address differs from each other. make sure to check your machine's
 //IP address and replace this with it( IP only. Keep the port number as it is).
-axios.defaults.baseURL = "http://10.10.5.123:3000/api/"
+axios.defaults.baseURL = "http:// 10.10.5.123:3000/api/"
 
 const AppNavigator = createStackNavigator(
   {
@@ -33,14 +34,16 @@ const AppNavigator = createStackNavigator(
     Orders: {
       screen: Orders,
       navigationOptions: ({ navigation }) => ({
-        title: 'Orders',
+        title: '',
         headerLeft: () => (
-          <Button
-           style={{textAlign: "center", marginTop: 80}} onPress={() => navigation.navigate("Home")} title="logout"/>
+          <View style={{flexDirection:'row-reverse',}}>
 
-           // onPress={() => alert('This is a button!')}
-           // title="logout"
-            //color="#e34566"
+<Button style={{textAlign: "center", marginTop:80, color: "#90ccae",  /*alignItems: "left"*/}} onPress={() => navigation.navigate("Home")} title="logout"/>
+          </View>
+          
+
+        
+
           
         ),
       })
@@ -48,8 +51,8 @@ const AppNavigator = createStackNavigator(
     OrderDetails: {
       screen: OrderDetails,
       navigationOptions: ({ navigation }) => ({
-        title: 'Order Details',
-        headerLeft: () => (
+        title: '',
+        headerRight: () => (
           <Button
            style={{textAlign: "center", marginTop: 80}} onPress={() => navigation.navigate("Home")} title="logout"/>
         ),
