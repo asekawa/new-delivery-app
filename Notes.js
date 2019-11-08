@@ -2,7 +2,7 @@ import React from "react";
 import { Platform, StyleSheet, Text, View,TextInput,TouchableOpacity,Button} from "react-native";
 import { red } from "ansi-colors";
 
-export class Orders extends React.Component {
+export  class Notes extends React.Component {
     static navigationOption={
       header:null
   }
@@ -12,38 +12,9 @@ export class Orders extends React.Component {
 
 
         <View style={styles1.container}>
-         
+         <Text>Add Notes</Text>
 
-          <Text style={{color:'#407CBF', fontSize: 30, textAlign: 'center'}}> Orders  {"\n"} </Text> 
           
-        {[1,2,3].map( item => {
-          return (
-            <View style={styles1.sec} key={item}> 
-            <TouchableOpacity
-            onPress={()=>this.props.navigation.navigate('OrderDetails')}
-            >
-                <View style={{flexDirection:'row', padding:'0.5%' ,height:'100%',width:'100%'}}>
-                    <View style={styles1.img}></View>
-                    <View style={{flexDirection:'column'}}>
-                        <View style={{flexDirection:'row'}}>
-                        <Text style={styles1.txt}>Order Number </Text>
-                        </View> 
-                        
-                        <View>
-                        <Text style={styles1.txt}>customer name </Text>
-                    
-                        </View>
-                        <Text style={styles1.txt}>menu item</Text>
-                        
-                    </View>
-    
-                </View>
-    
-            </TouchableOpacity>
-    
-            </View>
-          )
-        })}
         </View>
       );
     }

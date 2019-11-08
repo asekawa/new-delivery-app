@@ -4,6 +4,7 @@ import {Login} from "./LogIn"
 import {Orders} from "./Orders"
 import CheckAuth from './CheckAuth'
 import {OrderDetails} from "./OrderDetails"
+import {Notes} from "./Notes"
 import MapView from "./ShowLocation"
 import axios from 'axios';
 import {
@@ -28,26 +29,40 @@ const AppNavigator = createStackNavigator(
       navigationOptions:  {
         title: '',
         
-    }
+    } 
+    
     
     },
+    
     Orders: {
       screen: Orders,
       navigationOptions: ({ navigation }) => ({
         title: '',
         headerLeft: () => (
           <View style={{flexDirection:'row-reverse',}}>
+            
 
-<Button style={{textAlign: "center", marginTop:80, color: "#90ccae",  /*alignItems: "left"*/}} onPress={() => navigation.navigate("Home")} title="logout"/>
+<View >
+<Button style={{textAlign: "center", marginTop:80, borderRadius:22 , overflow: 'hidden', width:"20%"}}
+ onPress={() => navigation.navigate("Home")}
+ color="#407CBF"
+  title="logout"/>
+
           </View>
-          
-
-        
-
-          
+        </View>
         ),
       })
     },
+
+    Notes:  {
+      screen: Notes,
+      navigationOptions:  {
+        title: '',
+        
+    }
+  },
+
+
     OrderDetails: {
       screen: OrderDetails,
       navigationOptions: ({ navigation }) => ({

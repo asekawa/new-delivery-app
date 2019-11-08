@@ -42,28 +42,35 @@ export class OrderDetails extends React.Component {
           
         <Button style={{textAlign: "center", marginTop: 80}} onPress={() => this.props.navigation.navigate("Home")} title="logout"/>
         </View>
-        <Text style={{color: 'blue', fontSize: 20, textAlign: 'right', marginTop: 60}}>
+        <Text style={styles.text,styles.margin} >
+          Order details {'\n'}
+        </Text>
+
+        <Text style={styles.text, styles.margin}>
           Order details {'\n'}
         </Text>
         
-        <Text style={{color: 'blue', fontSize: 20, textAlign: 'left'}}>
+        <Text  style={styles.text}>
           Order Number:{'\n'}
         </Text>
-        <Text style={{color: 'blue', fontSize: 20, textAlign: 'left'}}>
+        <Text style={styles.text}>
           customer name{'\n'}
         </Text>
-        <Text style={{color: 'blue', fontSize: 20, textAlign: 'left'}}>
+        <Text style={styles.text}>
           Items:{'\n'}
         </Text>
-        <Text style={{color: 'blue', fontSize: 20, textAlign: 'left'}}>
+        <Text style={styles.text}>
           location{'\n'}
         </Text>
 
         
-        <Button 
-        textAlign= "center" 
-        color="#90ccae" 
+        
+       <View  style={[{borderRadius:22 , marginTop:10, width:"50%" ,overflow: 'hidden'}]}>
+        <Button
+          title="Log in"
+          color="#407CBF"
          onPress={() => this.props.navigation.navigate("MapView")} title="Show Location"/>
+         </View>
          
         <TouchableOpacity
           style={styles.button}
@@ -71,7 +78,7 @@ export class OrderDetails extends React.Component {
           <Text style={styles.txt}>Accept</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.tab}>
+        <TouchableOpacity style={styles.tab} onPress={()=>this.props.navigation.navigate('Notes')}>
           <Text style={styles.txt}>Add Notes</Text>
         </TouchableOpacity>
       </View>
@@ -82,7 +89,7 @@ export class OrderDetails extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
+    justifyContent: 'flex-end',
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
   },
@@ -96,14 +103,16 @@ const styles = StyleSheet.create({
     margin: 6,
     width: '30%',
     height: 40,
-    backgroundColor: '#35D073',
+    backgroundColor: '#407CBF',
     textAlign: 'center',
     elevation: 3,
+    overflow: 'hidden',
+    borderRadius:22 
   },
   txt: {
     color: '#ffffff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: 'flex-end',
+    justifyContent: 'flex-end',
     textAlign: 'center',
     marginTop: 10,
   },
@@ -114,8 +123,21 @@ const styles = StyleSheet.create({
     margin: 10,
   },
   instructions: {
-    textAlign: 'center',
+    textAlign: 'left',
     color: '#333333',
     marginBottom: 5,
   },
+
+  text:{
+    color: '#000000',
+     fontSize: 20, 
+     textAlign: 'left',
+     marginBottom:10,
+     fontWeight: 'bold'
+
+  },
+  margin:{
+    marginBottom:50
+
+  }
 });

@@ -80,18 +80,18 @@ export class Login extends React.Component {
       <View style={styles.container}>
 
         <View style={{display: "flex",justifyContent: "center"}}>
-        <Text style={{color: '#90ccae',fontSize: 45 }}>
+        <Text style={{color: '#407CBF',fontSize: 45 }}>
           FOOD HUB {'\n'}
         </Text>
         </View>
         
-        <Image source={driver} style={{width:100,height:100,borderRadius:45}}></Image>
+        <Image source={driver} style={{width:160,height:170,borderRadius:45}}></Image>
 
      
         
         <View style={{display: "flex"}}></View>
         <View style={styles.username}>
-          <Text style={{fontSize: 15}}>Email</Text>
+          <Text style={{fontSize: 15, fontWeight: 'bold'}}>Email</Text>
 
           <TextInput
             style={{width: 300, borderColor: 'black', borderWidth: 1,borderStyle:'solid',marginBottom:15}}
@@ -101,7 +101,7 @@ export class Login extends React.Component {
         </View>
 
         <View style={styles.password}>
-          <Text style={{fontSize: 15}}>Password</Text>
+          <Text style={{fontSize: 15 ,fontWeight: 'bold'}}>Password</Text>
 
           <TextInput
             style={{width: 300, borderColor: 'black', borderWidth: 1,borderStyle:'solid',marginBottom:15}}
@@ -111,12 +111,16 @@ export class Login extends React.Component {
           />
         </View>
 
+
+       
+       <View  style={[{borderRadius:22 , marginTop:10, width:"80%" ,overflow: 'hidden'}]}>
         <Button
           title="Log in"
-          color="#90ccae"
+          color="#407CBF"
           onPress={this.login}
-          style={{marginTop:10}}
+        
         />
+      </View>
       </View>
     );
   }

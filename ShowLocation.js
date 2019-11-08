@@ -88,8 +88,19 @@ export default function ShowLocation(){
           <></>
         )}
       </MapView>
-          <Button title="Order Completed" style={{ width: "100%" }}></Button>
+      <View  style={[{ marginTop:10, width:"100%"  ,position: 'absolute',bottom:0 ,marginBottom:10}]}>
+        <Button
+          title="order completed"
+          color="#407CBF"
+          marginTop= '20'
+          
+         // onPress={this.login}
+        
+        />
+      </View>
+         
     </>
+    
   );
 };
 
@@ -98,7 +109,7 @@ ShowLocation.navigationOptions = ({navigation}) => {
     title: "Confirm Order",
     headerRight: (
       <Button
-      style={{textAlign: "center", marginTop: 80}} onPress={() => navigation.navigate("Home")} title="logout"/>
+      style={{textAlign: "center", marginTop: 80}} onPress={() => navigation.navigate("Home")} title="logout" color="#407CBF"/>
     ),
   };
 };
