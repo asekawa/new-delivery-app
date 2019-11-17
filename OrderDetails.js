@@ -13,12 +13,11 @@ import {TouchableHighlight} from 'react-native-gesture-handler';
 export class OrderDetails extends React.Component {
   static navigationOption = {
      title:OrderDetails,
+     header: null,
     headerRight: () => (
       <Button
-       // onPress={() => alert('This is a button!')}
-         style={{textAlign: "center", marginTop: 80}} onPress={() => this.props.navigation.navigate("Home")} title="logot"
-       // title="logout"
-       // color="#fff"
+       onPress={() => this.props.navigation.navigate("Home")} 
+       title="logot"
       />
     ),
   };
@@ -39,16 +38,8 @@ export class OrderDetails extends React.Component {
       
       <View style={styles.container}>
         <View>
-          
-        <Button style={{textAlign: "center", marginTop: 80}} onPress={() => this.props.navigation.navigate("Home")} title="logout"/>
         </View>
-        <Text style={styles.text,styles.margin} >
-          Order details {'\n'}
-        </Text>
-
-        <Text style={styles.text, styles.margin}>
-          Order details {'\n'}
-        </Text>
+       
         
         <Text  style={styles.text}>
           Order Number:{'\n'}
@@ -63,20 +54,21 @@ export class OrderDetails extends React.Component {
           location{'\n'}
         </Text>
 
-        
-        
-       <View  style={[{borderRadius:22 , marginTop:10, width:"50%" ,overflow: 'hidden'}]}>
-        <Button
-          title="Log in"
-          color="#407CBF"
-         onPress={() => this.props.navigation.navigate("MapView")} title="Show Location"/>
+         <View style={{display: "flex",justifyContent: "center"}}>
+         <TouchableOpacity
+          style={styles.button}
+          onPress={() => this.props.navigation.navigate('MapView')}>
+          <Text style={styles.txt}>Show Location</Text>
+        </TouchableOpacity>
          </View>
          
-        <TouchableOpacity
+         <View style={{display: "flex",marginTop: 15,justifyContent: "center"}}>
+         <TouchableOpacity
           style={styles.button}
           onPress={() => this.props.navigation.navigate('DisplayOrders')}>
           <Text style={styles.txt}>Accept</Text>
         </TouchableOpacity>
+         </View>
 
         <TouchableOpacity style={styles.tab} onPress={()=>this.props.navigation.navigate('Notes')}>
           <Text style={styles.txt}>Add Notes</Text>
@@ -89,22 +81,21 @@ export class OrderDetails extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'flex-end',
-    alignItems: 'center',
+    marginLeft: 10,
+    marginRight: 5,
     backgroundColor: '#F5FCFF',
   },
   tab: {
     backgroundColor: '#123894',
     width: '100%',
     height: 50,
-    marginTop: 210,
+    marginTop: 100,
   },
   button: {
     margin: 6,
-    width: '30%',
+    width: '95%',
     height: 40,
     backgroundColor: '#407CBF',
-    textAlign: 'center',
     elevation: 3,
     overflow: 'hidden',
     borderRadius:22 

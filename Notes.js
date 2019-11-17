@@ -6,13 +6,26 @@ export  class Notes extends React.Component {
     static navigationOption={
       header:null
   }
+
+  state={
+    content: ""
+  }
     render() {
 
       return (
 
 
-        <View style={styles1.container}>
-         <Text>Add Notes</Text>
+        <View>
+         <Text style={{fontSize: 20,fontWeight: "bold"}}>Add Notes</Text>
+         <TextInput
+          placeholder="Compose note here.."
+          textAlignVertical="top"
+          numberOfLines={10}
+          blurOnSubmit={true}
+          onChangeText={text => this.setState({content: text})}
+         >
+
+         </TextInput>
 
           
         </View>
